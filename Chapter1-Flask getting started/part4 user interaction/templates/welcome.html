@@ -1,0 +1,26 @@
+<html>
+    <head>
+        Welcome
+    </head>
+    <body>
+        <p>Name is {{card.name}}</p>
+        <p>Class is {{card.class}}</p>
+        <a href="{{url_for('welcome',message='abc')}}">Home</a>
+        <p>{{max_index}}</p>
+        <p>
+            <button>
+                {% if index < max_index %}
+                    <a href="{{url_for('card',index=index+1)}}">
+                        Next Card
+                    </a>
+                {% else %}
+                    <a href="{{url_for('card',index=0)}}">
+                        Start Card
+                    </a>
+                {% endif %}
+            </button>
+            <a href="{{url_for('addcard')}}">Add Card</a>
+            <a href="{{url_for('removecard',index=index)}}">Remove Card</a>
+        </p>
+    </body>
+</html>

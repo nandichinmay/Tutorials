@@ -1,0 +1,15 @@
+[
+    {
+        "name":"ABC",
+        "class":1
+    },
+    {
+        "name":"BCD",
+        "class":2
+    },
+    {
+        "name":"DEF",
+        "class":3
+    }
+
+]

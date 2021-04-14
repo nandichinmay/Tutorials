@@ -1,0 +1,90 @@
+Part1: getting started
+Part2: basic application
+Part3: Jinja variables, condition, loops and api 
+Part4: User interaction
+Part5: Deploying Flask
+=========================================
+to know the urls:
+import <python file>
+<python file>.app.url_map
+=========================================
+jinja variable:
+{{<variable name>}}
+=========================================
+for getting the url type:
+{{url_for('<function name>',<variable>}}
+ex:{{url_for('card',index=index+1}}
+=========================================
+if conditions in jinja:
+{% if index < max_index %}
+     <a href="{{url_for('card',index=index+1)}}">Next Card</a>
+{% else %}
+    <a href="{{url_for('card',index=0)}}">Start Card</a>
+{% endif %}
+=========================================
+for loop in jinja:
+{% for card in cards %}
+    <li>
+        <a href="{{url_for('card',index=loop.index0)}}">{{card.name}}</a>
+    </li>
+{% endfor %}
+=========================================
+api result if not in json format:
+jsonify(output)
+=========================================
+returning an error:
+try:
+	<statement>
+except:
+	abort(404)
+=========================================
+for different methods to be allowed:
+@application.route("<enpoint>", methods=["GET","POST"]
+=========================================
+for taking input from user in html:
+<form method="post">
+            <p>
+                Name
+                <input type="text" name="name">
+            </p>
+            <p>
+                Class
+                <input type="int" name="class">
+            </p>
+            <button type="submit">Create</button>
+        </form>
+=========================================
+redirecting and to url:
+return redirect(url_for('card',index=len(db)-1))
+=========================================
+to load from file:
+with open("flash_db.json") as f:
+        return json.load(f) 
+=========================================
+to dump to a file:
+ with open("flash_db.json") as f:
+        return json.dump(db,f)
+=========================================
+to recieve data from form:
+request.form["<key>"]
+=========================================
+to have good form knowledge:
+use Flask-wtf library
+=========================================
+deploying:
+gunicorn- dont use flask server, use a reverse proxy (nginx)
+sudo apt install gunicor(it comes with updates)
+where as pip won't (manual update is needed)
+gunicorn <appname>:app
+
+now if we add -D it will run in background as daemon
+gunicorn -D <appname>:app
+
+nginx configuration
+cd /etc/nginx/sites-available
+ls 
+	output- default
+remove default site -sudo rm default
+copy deploymnet configuration and change accordingly and name default
+sudo service nginx restart
+==========================================

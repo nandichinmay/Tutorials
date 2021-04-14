@@ -1,0 +1,23 @@
+<html lang="en">
+    <head>
+        <title>
+                Welcome!
+        </title>
+    </head>
+    <body>
+        <h1>Welcome to my application</h1>
+        <img src="/static/logo.png" alt="logo" width="20%" height="auto">
+        <p>
+            {{message}}
+        </p>
+        <p>
+            {% for card in cards %}
+                <li>
+                    <a href="{{url_for('card',index=loop.index0)}}">
+                        {{card.name}}
+                    </a>
+                </li>
+            {% endfor %}
+        </p>
+    </body>
+</html>
